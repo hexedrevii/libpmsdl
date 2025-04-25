@@ -7,10 +7,6 @@ namespace MapExample
   class Renderer
   {
   public:
-    /**
-     * @brief Constructs a Renderer tied to a Game instance.
-     * @param game Pointer to the parent Pride::Game object.
-     */
     Renderer(SDL_Renderer* renderer, SDL_Window* window)
     {
       this->m_render = renderer;
