@@ -35,10 +35,10 @@ Linux specific installation instructions
 You will need a few libraries and applications before compiling.
 ```bash
 # Ubuntu
-sudo apt install cmake make gcc g++ clang ninja automake libx11-dev libxft-dev libxext-dev libibus-1.0-dev 
+sudo apt install cmake make gcc g++ clang ninja automake libx11-dev libxft-dev libxext-dev libibus-1.0-dev libltdl-dev libtool
 
 # Fedora
-sudo dnf install cmake make gcc gcc-g++ clang ninja automake libX11-devel libXft-devel libXext-devel ibus-devel
+sudo dnf install cmake make gcc gcc-g++ clang ninja automake libX11-devel libXft-devel libXext-devel ibus-devel libtool-devel
 ```
 
 ### Building
