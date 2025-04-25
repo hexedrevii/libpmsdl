@@ -7,6 +7,17 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 
+namespace Internal
+{
+  struct SDLEraser
+  {
+    void operator()(SDL_Texture* texture) const
+    {
+      SDL_DestroyTexture(texture);
+    }
+  };
+}
+
 namespace P8M
 {
   class Map
@@ -24,10 +35,10 @@ namespace P8M
     // Initialisers
     
     /// @brief loads a map from an absolute path.
-    Map(const std::filesystem::path& path);
+    Map(const std::filesystem::path& path, SDL_Renderer* renderer);
 
     /// @brief loads a .p8m file, relative to the binary path.
-    static Map from_relative(const std::filesystem::path& relative);
+    static Map from_relative(const std::filesystem::path& relative, SDL_Renderer* renderer);
 
 
     // Library functions
@@ -46,7 +57,9 @@ namespace P8M
     /// @brief draw a single layer, starting from the offset.
     void draw_layer(int layer);
   private:
-    std::map<int, std::unique_ptr<SDL_Texture>> m_tiles;
+    std::map<int, std::unique_ptr<SDL_Texture, Internal::SDLEraser>> m_tiles;
     nlohmann::json m_data;
+
+    SDL_Renderer* m_renderer;
   };
 }
