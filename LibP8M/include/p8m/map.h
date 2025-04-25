@@ -52,7 +52,7 @@ namespace P8M
     bool add_tile_relative(int id, const std::filesystem::path& relative, SDL_ScaleMode mode = SDL_SCALEMODE_LINEAR);
 
     /// @brief draw all layers, starting from the offset.
-    void draw();
+    void draw(float scale = 1);
 
     /// @brief draw a single layer, starting from the offset.
     void draw_layer(int layer);

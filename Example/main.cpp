@@ -38,7 +38,7 @@ int main()
   }
 
   MapExample::Renderer small_renderer = MapExample::Renderer(renderer, window);
-  if (!small_renderer.create(128, 128))
+  if (!small_renderer.create(80, 80))
   {
     SDL_Log("ERROR: RENDERER: Cannot create small renderer.");
     SDL_DestroyWindow(window);
@@ -85,12 +85,12 @@ int main()
     
     // Clear window inside small renderer
     // --------------------------------------------------
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 82, 172, 255);
     SDL_RenderClear(renderer);
     // --------------------------------------------------
     
-    // TODO: Draw map
-    
+    map.draw();
+        
     small_renderer.detach_and_draw();
 
     // Move to the next frame

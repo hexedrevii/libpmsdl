@@ -9,6 +9,7 @@
 #include <fstream>
 
 #include <SDL3_image/SDL_image.h>
+#include <vector>
 
 P8M::Map::Map(const std::filesystem::path& path, SDL_Renderer* renderer)
 {
@@ -79,4 +80,31 @@ bool P8M::Map::add_tile_relative(int id, const std::filesystem::path& relative, 
   }
 
   return this->add_tile(id, base / relative, mode);
+}
+
+void P8M::Map::draw(float scale)
+{
+  for (const std::vector<std::vector<int>> layer : this->layers)
+  {
+    for (size_t row = 0; row < layer.size(); row++)
+		{
+			for (size_t col = 0; col < layer[row].size(); col++)
+			{
+				if (layer[row][col] == 0) continue;
+
+				SDL_Texture* tex = this->m_tiles[layer[row][col]].get();
+				if (!tex)
+				{
+				  continue;
+				}
+
+				SDL_FRect dest = SDL_FRect {
+				  static_cast<float>(row * this->tile_size.x), static_cast<float>(col * this->tile_size.y),
+				  static_cast<float>(tex->w), static_cast<float>(tex->h)
+				};
+
+				SDL_RenderTexture(this->m_renderer, tex, nullptr, &dest);
+			}
+		}
+  }
 }
