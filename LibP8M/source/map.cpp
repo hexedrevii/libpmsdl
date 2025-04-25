@@ -26,9 +26,7 @@ P8M::Map P8M::Map::from_relative(const std::filesystem::path &relative)
 {
   const char* base = SDL_GetBasePath();
   if (!base)
-  {
     throw std::runtime_error(std::format("Cannot load base executable path: {}", SDL_GetError()));
-  }
 
   std::filesystem::path full = base / relative;
   return P8M::Map(full);
