@@ -4,6 +4,11 @@ libPMSDL is a tiny PicoMapper map loader library for SDL3!
 
 ![pm](./Images/image.png)
 
+# TODO
+- Implement draw_layer
+- Implement some utilities such as get_tile set_time
+- Other bs I'll figure out as I go lol
+
 # Usage and Examples
 The API is available inside the [header file](./LibP8M/include/p8m/map.h), it shows every function and description for the functions.
 
