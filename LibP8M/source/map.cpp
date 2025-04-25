@@ -14,6 +14,8 @@ P8M::Map::Map(const std::filesystem::path& path)
   if (!mdata.is_open())
     throw std::runtime_error(std::format("Could not open file at path {}.", path.string()));
 
+  this->m_data = nlohmann::json::parse(mdata);
+
   this->layers = this->m_data["layers"];
   
   this->tile_size = SDL_Point { this->m_data["tile_x"], this->m_data["tile_y"] };

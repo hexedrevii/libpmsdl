@@ -34,11 +34,11 @@ namespace P8M
 
     /// @brief register a tile for drawing.
     /// @returns true or false depending on success status.
-    bool add_tile(int id, const std::filesystem::path& path);
+    bool add_tile(int id, const std::filesystem::path& path, SDL_ScaleMode mode = SDL_SCALEMODE_LINEAR);
 
     /// @brief register a tile for drawing, relative to the binary path.
     /// @returns true or false depending on success status.
-    bool add_tile_relative(int id, const std::filesystem::path& relative);
+    bool add_tile_relative(int id, const std::filesystem::path& relative, SDL_ScaleMode mode = SDL_SCALEMODE_LINEAR);
 
     /// @brief draw all layers, starting from the offset.
     void draw();
